@@ -4,11 +4,12 @@ import entryController from '../controllers/entryController.js';
 const entryRoute = express.Router();
 
 entryRoute.get('/api', entryController.getEntries, (req, res) => {
-  res.status(200).json("API running......");
+  res.status(200).json(res.locals.entries);
 })
 
 entryRoute.post('/api/newEntry', entryController.postEntry, (req, res) => {
-  res.status(201).json('Entry Created!');
+  
+  res.status(201).json(res.locals.id);
 })
 
 entryRoute.put('/api/updateEntry/:id', (req, res) => {
