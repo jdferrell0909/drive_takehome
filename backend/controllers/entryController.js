@@ -6,7 +6,6 @@ entryController.getEntries = async (req, res, next) => {
   try {
     const entries = await Entry.find({});
     res.locals.entries = entries;
-    console.log(res.locals.entries);
     return next();
   } catch (error) {
     console.error(`Error message in entryController ==> ${error.message}`);
@@ -27,8 +26,9 @@ entryController.postEntry = async (req, res, next) => {
 }
 
 entryController.deleteEntry = async (req, res, next) => {
+  const id = req.params.id;
   try {
-    await Entry.delete({id: _id});
+    await Entry.deleteOne({_id: id});
     return next();
   } catch (error) {
     console.error(`Error message in entryController ==> ${error.message}`);
