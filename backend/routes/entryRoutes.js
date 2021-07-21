@@ -12,7 +12,6 @@ entryRoute.get('/api/getOneEntry/:id', entryController.getOneEntry, (req, res) =
 })
 
 entryRoute.post('/api/newEntry', entryController.postEntry, (req, res) => {
-  
   res.status(201).json(res.locals.id);
 })
 
